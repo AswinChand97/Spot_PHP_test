@@ -18,6 +18,8 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 public class MainActivity extends Activity {
 
@@ -34,17 +36,40 @@ public class MainActivity extends Activity {
     private Uri fileUri = null;
     String picPath = null;
     String filePath = null;// file url to store image
-
-    private Button btnCapturePicture, btnChooseFromGallery;
+    int count = 0;
+    private ImageButton btnCapturePicture, btnChooseFromGallery;
+    ImageButton addFab;
     private Uri selectedUri = null;
+    RelativeLayout takePictureContainer,pickFromGalleryContainer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
-        btnCapturePicture = (Button) findViewById(R.id.btnCapturePicture);
-        btnChooseFromGallery = (Button) findViewById(R.id.btnChooseFromGallery);
+        btnCapturePicture = (ImageButton) findViewById(R.id.btnCapturePicture);
+        btnChooseFromGallery = (ImageButton) findViewById(R.id.btnChooseFromGallery);
+        addFab = (ImageButton)findViewById(R.id.pictureFab);
+        takePictureContainer = (RelativeLayout)findViewById(R.id.takePictureContainer);
+        pickFromGalleryContainer = (RelativeLayout)findViewById(R.id.pickFromGalleryContainer);
+        addFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    count++;
+                    if(count % 2 != 0) {
+                        takePictureContainer.setVisibility(View.VISIBLE);
+                        pickFromGalleryContainer.setVisibility(View.VISIBLE);
+                    }
+                    else
+                    {
+                        takePictureContainer.setVisibility(View.INVISIBLE);
+                        pickFromGalleryContainer.setVisibility(View.INVISIBLE);
+                    }
+
+
+            }
+        });
+
         btnCapturePicture.setOnClickListener(new View.OnClickListener() {
 
             @Override

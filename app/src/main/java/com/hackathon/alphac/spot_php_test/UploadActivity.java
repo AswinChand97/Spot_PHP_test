@@ -207,6 +207,7 @@ public class UploadActivity extends Activity {
     private void showAlert(String message) {
     Intent intent = new Intent(UploadActivity.this,ShowResult.class);
     intent.putExtra("results",message);
+    intent.putExtra("filePath",filePath);
     startActivity(intent);
 //        AlertDialog.Builder builder = new AlertDialog.Builder(this);
 //        builder.setMessage(message).setTitle("Response from Servers")
