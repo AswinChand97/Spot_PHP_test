@@ -4,7 +4,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/view_background"
-    android:baselineAligned="false">
+    android:baselineAligned="false"
+    android:id="@+id/parentLayout">
 
     <!--<LinearLayout-->
         <!--android:layout_width="fill_parent"-->
@@ -56,55 +57,56 @@
         android:id="@+id/pictureFab"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginBottom="35dp"
+        android:layout_marginRight="35dp"
         android:visibility="visible"
-        android:src="@drawable/ic_add_circle_white_24dp"/>
-    <RelativeLayout
+        android:src="@drawable/ic_add_circle_black_48dp"
+        android:background="@null" />
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/takePictureContainer"
         android:layout_above="@id/pictureFab"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="20dp"
-        android:layout_marginLeft="50dp"
-        android:visibility="invisible">
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_photo_camera_white_24dp"
-            android:id="@+id/btnCapturePicture"
-            android:layout_marginLeft="150dp"/>
+        android:visibility="invisible"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btnTakePicture"
-            android:layout_toRightOf="@id/btnCapturePicture"
-            android:layout_marginTop="20dp"
             android:textColor="@color/txt_font"
             android:layout_marginRight="20dp"/>
-    </RelativeLayout>
-    <RelativeLayout
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_camera_alt_black_24dp"
+            android:id="@+id/btnCapturePicture"
+            android:background="@null"
+            />
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/pickFromGalleryContainer"
         android:layout_above="@id/takePictureContainer"
         android:layout_alignParentRight="true"
-        android:layout_marginLeft="50dp"
-        android:visibility="invisible">
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_burst_mode_white_24dp"
-            android:id="@+id/btnChooseFromGallery"
-            android:layout_marginLeft="150dp"/>
+        android:visibility="invisible"
+        android:layout_marginRight="20dp"
+       >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btnChooseFromGallery"
             android:textColor="@color/txt_font"
-            android:layout_toRightOf="@id/btnChooseFromGallery"
-            android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"/>
-    </RelativeLayout>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_burst_mode_black_24dp"
+            android:id="@+id/btnChooseFromGallery"
+            android:background="@null"
+            />
+    </LinearLayout>
 </RelativeLayout>
