@@ -2,10 +2,37 @@
 <resources>
 
     <string name="app_name">Spot</string>
-    <string name="btnTakePicture">Capture Image</string>
-    <string name="btnChooseFromGallery">Choose From Gallery</string>
+    <string name="btnTakePicture">Take a picture</string>
+    <string name="btnChooseFromGallery">Choose from Gallery</string>
     <string name="or">(or)</string>
     <string name="btnUploadToServer">Upload to Server</string>
     <string name="resultHeading">RESULTS:</string>
+    <string name="title_activity_nav_drawer">NavDrawerActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Snap it</string>
+    <string name="slide_1_desc">Take a picture and upload on the go</string>
+
+    <string name="slide_2_title">Easy UI</string>
+    <string name="slide_2_desc">Users &#8230; we will be your best friends</string>
+
+    <string name="slide_3_title">Accurate results</string>
+    <string name="slide_3_desc">We can provide you almost accurate results</string>
+
+    <string name="slide_4_title">We are learning from you &#8230;</string>
+    <string name="slide_4_desc">Smart systems at the backend which learn from your inputs</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
 
 </resources>

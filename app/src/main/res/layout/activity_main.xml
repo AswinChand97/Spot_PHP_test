@@ -70,18 +70,19 @@
         android:layout_alignParentRight="true"
         android:layout_marginBottom="20dp"
         android:visibility="invisible"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="35dp"
         android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btnTakePicture"
             android:textColor="@color/txt_font"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="20dp"
+            />
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_camera_alt_black_24dp"
+            android:src="@drawable/ic_camera_alt_black_36dp"
             android:id="@+id/btnCapturePicture"
             android:background="@null"
             />
@@ -93,7 +94,8 @@
         android:layout_above="@id/takePictureContainer"
         android:layout_alignParentRight="true"
         android:visibility="invisible"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginBottom="15dp"
        >
         <TextView
             android:layout_width="wrap_content"
@@ -104,7 +106,7 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_burst_mode_black_24dp"
+            android:src="@drawable/ic_burst_mode_black_36dp"
             android:id="@+id/btnChooseFromGallery"
             android:background="@null"
             />

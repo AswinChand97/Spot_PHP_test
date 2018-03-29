@@ -15,12 +15,20 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.content.ContextCompat;
+import android.transition.Fade;
+import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import static android.transition.Fade.IN;
+
 public class MainActivity extends Activity {
 
     // LogCat tag
@@ -40,7 +48,9 @@ public class MainActivity extends Activity {
     private ImageButton btnCapturePicture, btnChooseFromGallery;
     ImageButton addFab;
     private Uri selectedUri = null;
-    RelativeLayout takePictureContainer,pickFromGalleryContainer;
+    LinearLayout takePictureContainer,pickFromGalleryContainer;
+
+    private Fade mFade;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,18 +60,22 @@ public class MainActivity extends Activity {
         btnCapturePicture = (ImageButton) findViewById(R.id.btnCapturePicture);
         btnChooseFromGallery = (ImageButton) findViewById(R.id.btnChooseFromGallery);
         addFab = (ImageButton)findViewById(R.id.pictureFab);
-        takePictureContainer = (RelativeLayout)findViewById(R.id.takePictureContainer);
-        pickFromGalleryContainer = (RelativeLayout)findViewById(R.id.pickFromGalleryContainer);
+        takePictureContainer = (LinearLayout) findViewById(R.id.takePictureContainer);
+        pickFromGalleryContainer = (LinearLayout) findViewById(R.id.pickFromGalleryContainer);
+
         addFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                     count++;
                     if(count % 2 != 0) {
+                        addFab.setImageDrawable(ContextCompat.getDrawable(MainActivity.this,R.drawable.ic_close_black_48dp));
                         takePictureContainer.setVisibility(View.VISIBLE);
                         pickFromGalleryContainer.setVisibility(View.VISIBLE);
                     }
                     else
                     {
+                        addFab.setImageDrawable(ContextCompat.getDrawable(MainActivity.this,R.drawable.ic_add_circle_black_48dp));
                         takePictureContainer.setVisibility(View.INVISIBLE);
                         pickFromGalleryContainer.setVisibility(View.INVISIBLE);
                     }
@@ -70,7 +84,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        btnCapturePicture.setOnClickListener(new View.OnClickListener() {
+        takePictureContainer.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -79,14 +93,26 @@ public class MainActivity extends Activity {
         });
 
 
-        btnChooseFromGallery.setOnClickListener(new View.OnClickListener() {
+        pickFromGalleryContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 chooseFromGallery();
             }
         });
+        btnCapturePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                captureImage();
+            }
+        });
 
+        btnChooseFromGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                chooseFromGallery();
+            }
+        });
 
         if (!isDeviceSupportCamera()) {
             Toast.makeText(getApplicationContext(),
