@@ -5,6 +5,7 @@ package com.hackathon.alphac.spot_php_test;
  */
 
 public class Config {
-    public static final String SERVER_URL = "http://dcebcc7a.ngrok.io/upload";
+    public static final String SERVER_URL = "http://f6d78bcc.ngrok.io/upload";
     public static final String IMAGE_DIRECTORY_NAME = "Spot Application Images";
+    public static final String SUGGESTED_IMAGE_VIEW = "http://f6d78bcc.ngrok.io/image?filename=";
 }
