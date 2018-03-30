@@ -21,8 +21,6 @@ import java.util.Arrays;
 public class ShowResult extends AppCompatActivity {
     TextView result;
     String resultMessage;
-    String finalResult;
-    Float percentageFloat;
     String filePath;
     ImageView preview;
     ListView lv;
