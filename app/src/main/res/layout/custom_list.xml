@@ -19,20 +19,21 @@
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:id="@+id/img1"
-        android:src="@drawable/ic_launcher_background"/>
+        android:contentDescription="@string/desc_1"
+        />
         <ImageView
             android:layout_width="75dp"
             android:layout_height="75dp" 
             android:layout_marginLeft="10dp"
             android:id="@+id/img2"
-            android:src="@drawable/ic_launcher_background"
+            android:contentDescription="@string/desc_2"
             />
         <ImageView
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_marginLeft="10dp"
             android:id="@+id/img3"
-            android:src="@drawable/ic_launcher_background"
+            android:contentDescription="@string/desc_3"
             />
     </LinearLayout>
     <Button

@@ -9,25 +9,18 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.content.ContextCompat;
-import android.transition.Fade;
-import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
-
-import static android.transition.Fade.IN;
 
 public class MainActivity extends Activity {
 
@@ -40,10 +33,11 @@ public class MainActivity extends Activity {
     String filePath = null;
     int count = 0;
     private ImageButton btnCapturePicture, btnChooseFromGallery;
-    ImageButton addFab;
+    ImageButton addFab,changeLanguage;
     private Uri selectedUri = null;
     LinearLayout takePictureContainer, pickFromGalleryContainer;
-    private Fade mFade;
+    PrefManager pm;
+    Animation fadeIn1,fadeOut1,fadeOut2,fadeIn2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +48,12 @@ public class MainActivity extends Activity {
         addFab = (ImageButton) findViewById(R.id.pictureFab);
         takePictureContainer = (LinearLayout) findViewById(R.id.takePictureContainer);
         pickFromGalleryContainer = (LinearLayout) findViewById(R.id.pickFromGalleryContainer);
-
+        changeLanguage = (ImageButton)findViewById(R.id.changeLanguage);
+        pm = new PrefManager(this);
+        fadeIn1 = AnimationUtils.loadAnimation(MainActivity.this,R.anim.fade_in1);
+        fadeIn2 = AnimationUtils.loadAnimation(MainActivity.this,R.anim.fade_in2);
+        fadeOut1 = AnimationUtils.loadAnimation(MainActivity.this,R.anim.fade_out1);
+        fadeOut2 = AnimationUtils.loadAnimation(MainActivity.this,R.anim.fade_out2);
         addFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,12 +61,16 @@ public class MainActivity extends Activity {
                 count++;
                 if (count % 2 != 0) {
                     addFab.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.ic_close_black_48dp));
-                    takePictureContainer.setVisibility(View.VISIBLE);
-                    pickFromGalleryContainer.setVisibility(View.VISIBLE);
+                    takePictureContainer.setClickable(true);
+                    pickFromGalleryContainer.setClickable(true);
+                    takePictureContainer.startAnimation(fadeIn1);
+                    pickFromGalleryContainer.startAnimation(fadeIn2);
                 } else {
                     addFab.setImageDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.ic_add_circle_black_48dp));
-                    takePictureContainer.setVisibility(View.INVISIBLE);
-                    pickFromGalleryContainer.setVisibility(View.INVISIBLE);
+                    takePictureContainer.startAnimation(fadeOut1);
+                    pickFromGalleryContainer.startAnimation(fadeOut2);
+                    takePictureContainer.setClickable(false);
+                    pickFromGalleryContainer.setClickable(false);
                 }
 
 
@@ -104,6 +107,25 @@ public class MainActivity extends Activity {
             }
         });
 
+        changeLanguage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pm.increment();
+                int num = pm.returnLanguageCount();
+                Log.e("number",num+"");
+                if(num%2==1) {
+                    changeLanguage.setImageDrawable(ContextCompat.getDrawable(MainActivity.this,R.drawable.ab));
+                    pm.setTamil(true);
+                    Toast.makeText(MainActivity.this,"Language set to Tamil",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    changeLanguage.setImageDrawable(ContextCompat.getDrawable(MainActivity.this,R.drawable.aa));
+                    pm.setTamil(false);
+                    Toast.makeText(MainActivity.this,"Language set to English!",Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
         if (!isDeviceSupportCamera()) {
             Toast.makeText(getApplicationContext(),
                     "Sorry! Your device doesn't support camera",

@@ -7,12 +7,6 @@
     <string name="or">(or)</string>
     <string name="btnUploadToServer">Upload to Server</string>
     <string name="resultHeading">RESULTS:</string>
-    <string name="title_activity_nav_drawer">NavDrawerActivity</string>
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-
-    <string name="action_settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -29,10 +23,19 @@
     <string name="slide_3_title">Accurate results</string>
     <string name="slide_3_desc">We can provide you almost accurate results</string>
 
-    <string name="slide_4_title">We are learning from you &#8230;</string>
+    <string name="slide_4_title">We are learning from you</string>
     <string name="slide_4_desc">Smart systems at the backend which learn from your inputs</string>
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
+    <string name="desc_1">Image 1</string>
+    <string name="desc_2">Image 2</string>
+    <string name="desc_3">Image 3</string>
+    <string name="title_activity_navigation_drawer">NavigationDrawer</string>
 
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_help">Help</string>
+    <string name="action_about">About Us</string>
+    <string name="action_settings">Settings</string>
 </resources>

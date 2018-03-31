@@ -31,6 +31,8 @@ import android.os.RecoverySystem;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -46,9 +48,11 @@ public class UploadActivity extends Activity {
     private String filePath = null;
     private TextView txtPercentage;
     private ImageView imgPreview;
+    ImageView fileUploadIcon;
+    Animation blink;
     private Button btnUpload;
     long totalSize = 0;
-
+    PrefManager pfm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +61,10 @@ public class UploadActivity extends Activity {
         btnUpload = (Button) findViewById(R.id.btnUpload);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         imgPreview = (ImageView) findViewById(R.id.imgPreview);
+        fileUploadIcon = (ImageView)findViewById(R.id.uploadIcon);
+        pfm = new PrefManager(this);
+        blink = AnimationUtils.loadAnimation(UploadActivity.this,R.anim.blink);
+        fileUploadIcon.startAnimation(blink);
         Intent i = getIntent();
         filePath = i.getStringExtra("filePath");
         boolean isCaptured = i.getBooleanExtra("isCaptured", true);
@@ -147,9 +155,17 @@ public class UploadActivity extends Activity {
                 entity.addPart("photo", new FileBody(sourceFile));
                 Log.d("added photo", "here");
 
-                entity.addPart("name",
-                        new StringBody("Alpha 6c"));
+                entity.addPart("name", new StringBody("Alpha 6c"));
                 entity.addPart("email", new StringBody("alpha6c@gmail.com"));
+                Log.e("boolean",pfm.isTamil()+"");
+                if(pfm.isTamil()) {
+                    Log.e("inTamil","TAMIL");
+                    entity.addPart("language", new StringBody("ta"));
+                }
+                else {
+                    Log.e("inEnglish","ENGLISH");
+                    entity.addPart("language", new StringBody("en"));
+                }
                 totalSize = entity.getContentLength();
                 httppost.setEntity(entity);
 
@@ -181,7 +197,7 @@ public class UploadActivity extends Activity {
         @Override
         protected void onPostExecute(String result) {
             Log.e(TAG, "Response from server: " + result);
-
+            System.out.println(result);
             showAlert(result);
 
             super.onPostExecute(result);

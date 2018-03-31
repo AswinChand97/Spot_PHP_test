@@ -13,6 +13,16 @@
     android:layout_marginTop="20dp"
     android:src="@drawable/spot_mainscreen"
     android:background="@null"/>
+    <ImageButton
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="35dp"
+        android:layout_marginBottom="35dp"
+        android:src="@drawable/aa"
+        android:background="@null"
+        android:id="@+id/changeLanguage"/>
     <!--<LinearLayout-->
         <!--android:layout_width="fill_parent"-->
         <!--android:layout_height="wrap_content"-->

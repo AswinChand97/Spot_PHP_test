@@ -43,7 +43,7 @@ public class ResultAdapter extends BaseAdapter {
     public long getItemId(int i) {
         return i;
     }
-    public class Holder
+    public class ViewHolder
     {
         TextView tv;
         ImageView iv1,iv2,iv3;
@@ -51,8 +51,8 @@ public class ResultAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         View rowView;
-        Holder h = new Holder();
-        rowView = inflater.inflate(R.layout.custom_list,null);
+        ViewHolder h = new ViewHolder();
+        rowView = inflater. inflate(R.layout.custom_list,viewGroup,false);
         h.tv = (TextView)rowView.findViewById(R.id.text1);
         h.iv1 = (ImageView)rowView.findViewById(R.id.img1);
         h.iv2 = (ImageView)rowView.findViewById(R.id.img2);
@@ -61,7 +61,7 @@ public class ResultAdapter extends BaseAdapter {
         ArrayList<String> imagesForPlant = images.get(i);
         Picasso.with(context).load(Config.SUGGESTED_IMAGE_VIEW+imagesForPlant.get(0)).into(h.iv1);
         Picasso.with(context).load(Config.SUGGESTED_IMAGE_VIEW+imagesForPlant.get(1)).into(h.iv2);
-        Picasso.with(context).load(Config.SUGGESTED_IMAGE_VIEW+imagesForPlant.get(2)).into(h.iv1);
+        Picasso.with(context).load(Config.SUGGESTED_IMAGE_VIEW+imagesForPlant.get(2)).into(h.iv3);
         return rowView;
     }
 }
